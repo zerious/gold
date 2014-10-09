@@ -1,0 +1,17 @@
+* {
+  line-height: 1.5;
+}
+
+a {
+  color: #24a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e50;
+}
+
+h1 {
+  font-size: 1.2em;
+  color: #fff;
+}

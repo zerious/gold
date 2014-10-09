@@ -1,0 +1,73 @@
+if projects.length
+  table._DATA._FULL_WIDTH._DOUBLE_HEADING
+    tr
+      th Project
+      th(colspan="2") Version
+      th(colspan="2") Dependencies
+      th(colspan="4") Gitif projects
+      th(colspan="3") Lines
+      th(colspan="2") Tests
+    tr._SUB_HEADING
+      th Name
+      th._ALIGN_RIGHT Local
+      th._ALIGN_RIGHT NPM
+      th._ALIGN_RIGHT Core
+      th._ALIGN_RIGHT Dev
+      th Origin
+      th Main
+      th Issues
+      th Pulls
+      th Total
+      th(colspan="2") Diff
+      th Passed
+      th Failed
+    for project in projects
+      if pkg = project.pkg
+      tr
+        td
+          if pkg.homepage
+            a(href="${pkg.homepage}")>b ${pkg.name}
+          else
+            b ${pkg.name}
+        if pkg.version > project.npm.version
+          td._ALIGN_RIGHT>var ${pkg.version}
+        else
+          td._ALIGN_RIGHT ${pkg.version}
+        td._ALIGN_RIGHT
+          if project.npm && project.npm.version
+            a(href="https://www.npmjs.org/package/${pkg.name}") ${project.npm.version}
+        td._ALIGN_RIGHT ${project.dependencies}
+        td._ALIGN_RIGHT ${project.devDependencies}
+        td
+          if git = project.git
+            if remotes = git.remotes
+              if remotes.origin
+                a(href="${remotes.origin}") origin
+        td
+          if git = project.git
+            if remotes = git.remotes
+              if remotes.main
+                a(href="${remotes.main}") main
+        td
+          if project.issues && project.issues.count
+            a(href="${project.issues.url}") ${project.issues.count}
+        td
+          if project.pulls && project.pulls.count
+            a(href="${project.pulls.url}")>b ${project.pulls.count}
+        if diff = project.diff || {}
+          td._ALIGN_RIGHT._LINES ${project.lines}
+          td._ALIGN_RIGHT
+            if diff.additions
+              b._GREEN +={diff.additions}
+          td._ALIGN_RIGHT
+            if diff.deletions
+              b._RED -={diff.deletions}
+        if results = project.results
+          td._ALIGN_RIGHT
+            if results.pass
+              b._GREEN ${results.pass}
+          td._ALIGN_RIGHT
+            if results.fail
+              b._RED ${results.fail}
+else
+  p No projects found.

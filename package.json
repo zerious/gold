@@ -2,11 +2,14 @@
   "name": "gold",
   "version": "0.0.1",
   "description": "Management and monitoring UI for apps built with Lighter",
-  "main": "gold.js",
-  "bin": "commands/cli.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lighterio/gold"
+  "dependencies": {
+    "lighter": "^0.1.71",
+    "shellify": "^0.0.4"
+  },
+  "devDependencies": {
+    "zeriousify": "^0.1.10",
+    "exam": "^0.0.8",
+    "istanbul": "0.2.11"
   },
   "keywords": [
     "lighter",
@@ -20,37 +23,23 @@
     "development",
     "environment"
   ],
-  "author": "Sam Eubank <sameubank@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/lighterio/gold/issues"
+  "main": "gold.js",
+  "bin": "commands/cli.js",
+  "engines": {
+    "node": ">=0.2.6"
   },
-  "homepage": "https://github.com/lighterio/gold",
-  "contributors": [
-    "Sam Eubank <sameubank@gmail.com>"
-  ],
-  "engines": [
-    "node >= 0.2.6"
-  ],
   "scripts": {
     "test": "./node_modules/exam/exam.js",
-    "retest": "./node_modules/exam/exam.js --watch",
     "cover": "istanbul cover ./node_modules/exam/exam.js",
     "report": "open coverage/lcov-report/index.html",
     "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
-  "dependencies": {
-    "lighter": "lighter",
-    "shellify": "0.0.4"
-  },
-  "devDependencies": {
-    "zeriousify": "0.1.9",
-    "exam": "0.0.7",
-    "istanbul": "0.2.11"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/lighterio/gold/blob/master/MIT-LICENSE.md"
-    }
-  ]
+  "repository": "https://github.com/lighterio/gold",
+  "bugs": "https://github.com/lighterio/gold/issues",
+  "homepage": "https://github.com/lighterio/gold",
+  "author": "Sam Eubank <sameubank@gmail.com>",
+  "contributors": [
+    "Sam Eubank <sameubank@gmail.com>"
+  ],
+  "license": "MIT"
 }

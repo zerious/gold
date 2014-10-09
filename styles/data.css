@@ -1,0 +1,51 @@
+table {
+  border-spacing: 1px;
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.1em 0.4em;
+}
+
+table._DATA {
+  background: #eee;
+}
+
+table._DATA th {
+  background: #fc0;
+}
+
+table._DATA tr._SUB_HEADING th {
+  background: #ddd;
+}
+
+table._DATA td {
+  background: #fff;
+}
+
+table._DATA tr:nth-child(odd)>td {
+  background: #f8f8f8;
+}
+
+table._DATA._DOUBLE_HEADING tr:nth-child(odd)>td {
+  background: #fff;
+}
+
+table._DATA._DOUBLE_HEADING tr:nth-child(even)>td {
+  background: #f8f8f8;
+}
+
+var {
+  background: #fea!important;
+  font-weight: bold;
+  font-style: normal;
+}
+
+._GREEN {
+  color: #080;
+}
+
+._RED {
+  color: #c00;
+}

@@ -1,0 +1,19 @@
+html(lang="en")
+  head
+    link(rel="stylesheet" href="/a.css?v=={cacheBust}")
+    link(rel="shortcut icon" href="/favicon.ico?v=={cacheBust}")
+    meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1")
+    title Gold
+
+  body
+    #_HEAD>._PANEL>h1#_LOGO
+      img(src="/gold.svg?v=={cacheBust}")
+      : Gold
+      span ${dir}
+    #_BODY
+      ._PANEL
+        form
+          call projects
+    #_FOOT
+      ._PANEL
+    script(src="/a.js?v=={cacheBust}")

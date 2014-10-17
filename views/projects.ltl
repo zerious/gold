@@ -4,7 +4,7 @@ if projects.length
       th Project
       th(colspan="2") Version
       th(colspan="2") Dependencies
-      th(colspan="4") Gitif projects
+      th(colspan="4") Git
       th(colspan="3") Lines
       th(colspan="2") Tests
     tr._SUB_HEADING

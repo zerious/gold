@@ -5,7 +5,6 @@
 }
 
 body {
-  border-top: 0.4em solid #e50;
   font-family: Arial, sans-serif;
   background: #ccc;
   color: #000;
@@ -13,32 +12,38 @@ body {
 }
 
 #_HEAD {
+  position: relative;
   background: #235;
-  border: 0 solid #000;
-  border-width: 1px 0;
 }
 
-#_LOGO img {
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  margin: 0 0.1em 0 0;
-  vertical-align: middle;
+#_HEAD>img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 4px;
+  top: 0;
 }
 
-#_LOGO span {
-  color: #ccc;
-  font-weight: normal;
-  font-size: 0.9em;
+#_TREE {
+  background: #abc;
+  width: 80px;
+}
+
+#_TREE,
+#_AREA {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+}
+
+#_AREA {
+  background: #012;
+  left: 80px;
+  right: 0;
 }
 
 #_BODY{
   background: #eee;
-}
-
-#_FOOT {
-  color: #555;
-  font-size: 1.2em;
 }
 
 ._HIDDEN {

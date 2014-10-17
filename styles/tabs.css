@@ -1,0 +1,84 @@
+#_PROJECTS,
+#_PARTS {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+}
+
+#_PROJECTS {
+  margin-left: 44px;
+}
+
+#_PARTS {
+  background: #001;
+}
+
+#_HEAD>b,
+#_PARTS>b {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  z-index: 999;
+  border-bottom: 1px solid #457;
+}
+
+#_HEAD>b {
+  border-color: #abc;
+  z-index: 1001;
+}
+
+._TAB {
+  position: absolute;
+  bottom: 0;
+}
+
+._SHADE {
+  fill: #000;
+  filter: url(#_BLUR);
+}
+
+._SHINE {
+  stroke: #568;
+  stroke-width: 1px;
+  fill: #346;
+}
+
+._TTTTAB {
+  border: 1px solid red;
+}
+
+._TAB:hover ._SHINE {
+  stroke: #89b!important;
+  fill: #457!important;
+}
+
+._TAB {
+  height: 30px;
+}
+
+._TAB>svg {
+  height: 100%;
+  margin: 0 -10px;
+}
+
+._TAB._ON ._SHINE {
+  stroke: #def!important;
+  fill: #abc!important;
+}
+
+#_PARTS ._SHINE {
+  stroke: #235;
+  fill: #08192c;
+}
+
+#_PARTS>._TAB:hover ._SHINE {
+  stroke: #457!important;
+  fill: #11223f!important;
+}
+
+#_PARTS>._TAB._ON ._SHINE {
+  stroke: #457!important;
+  fill: #012!important;
+}

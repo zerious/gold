@@ -6,14 +6,16 @@ html(lang="en")
     title Gold
 
   body
-    #_HEAD>._PANEL>h1#_LOGO
+    svg._HIDDEN(version="1.1" xmlns="http://www.w3.org/2000/svg")
+      filter#_BLUR>feGaussianBlur(stdDeviation="2")
+    #_HEAD
+      b
       img(src="/gold.svg?v=={cacheBust}")
-      : Gold
-      span ${dir}
-    #_BODY
-      ._PANEL
+      #_PROJECTS
+    #_TREE
+    #_AREA
+      #_PARTS>b
+      #_BODY
         form
-          call projects
-    #_FOOT
-      ._PANEL
+          //call projects
     script(src="/a.js?v=={cacheBust}")

@@ -1,21 +1,34 @@
 html(lang="en")
   head
-    link(rel="stylesheet" href="/a.css?v=={cacheBust}")
+    if styleTags
+      : ={styleTags}
+    else
+      link(rel="stylesheet" href="/a.css?v=={cacheBust}")
     link(rel="shortcut icon" href="/favicon.ico?v=={cacheBust}")
     meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1")
     title Gold
 
   body
-    svg._HIDDEN(version="1.1" xmlns="http://www.w3.org/2000/svg")
-      filter#_BLUR>feGaussianBlur(stdDeviation="2")
     #_HEAD
+      img#_GOLD._ON(src="/gold.svg?v=={cacheBust}")
       b
-      img(src="/gold.svg?v=={cacheBust}")
+      u
       #_PROJECTS
     #_TREE
     #_AREA
-      #_PARTS>b
-      #_BODY
-        form
-          //call projects
-    script(src="/a.js?v=={cacheBust}")
+      #_PARTS
+        b
+        u
+      #_CODE
+    #_MAIN
+      form
+        call projects
+
+    script var _PROJECTS=={list}
+    if scriptTags
+      script window._WAITING_FOR_SCRIPTS = 1
+      : ={scriptTags}
+      // Once D6 has context, it calls onReady upon transitions, otherwise call it here.
+      script D6._CONTEXT || window._ON_READY()
+    else
+      script(src="/a.js?v=={cacheBust}")

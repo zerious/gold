@@ -23,7 +23,7 @@ if projects.length
       th Failed
     for project in projects
       if pkg = project.pkg
-      tr
+      tr._PROJECT
         td
           if pkg.homepage
             a(href="${pkg.homepage}")>b ${pkg.name}

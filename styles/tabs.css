@@ -6,32 +6,82 @@
 }
 
 #_PROJECTS {
-  margin-left: 44px;
+  margin-left: 30px;
 }
 
 #_PARTS {
-  background: #001;
+  background: #abc;
+}
+
+#_HEAD>b,
+#_HEAD>u,
+#_PARTS>b,
+#_PARTS>u {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  z-index: 1001;
+  background: #fff;
 }
 
 #_HEAD>b,
 #_PARTS>b {
-  position: absolute;
-  display: block;
-  bottom: 0;
-  width: 100%;
-  height: 0;
+  bottom: 1px;
   z-index: 999;
-  border-bottom: 1px solid #457;
 }
 
-#_HEAD>b {
-  border-color: #abc;
-  z-index: 1001;
+#_PARTS>b {
+  background: #346;
+}
+
+#_HEAD>u {
+  background: #b8c9dc;
+}
+
+#_PARTS>u {
+  background: #013;
 }
 
 ._TAB {
   position: absolute;
-  bottom: 0;
+  height: 30px;
+  cursor: pointer;
+  top: 0;
+}
+
+._TAB>b {
+  font-weight: 500;
+  display: block;
+  margin: -28px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+._ACTIVE_TAB>b {
+  font-weight: 600;
+}
+
+#_PROJECTS>._TAB>b {
+  color: #abc;
+}
+
+#_PROJECTS>._HOVERED_TAB>b {
+  color: #fff;
+}
+
+#_PROJECTS>._ACTIVE_TAB>b {
+  color: #000;
+  text-shadow: 0 1px 0.5px #cde;
+}
+
+#_PARTS>._TAB>b {
+  color: #000;
+}
+
+#_PARTS>._ACTIVE_TAB>b {
+  color: #fff!important;
 }
 
 ._SHADE {
@@ -40,45 +90,41 @@
 }
 
 ._SHINE {
-  stroke: #568;
-  stroke-width: 1px;
+  stroke-width: 1.6px;
+  stroke: #457;
   fill: #346;
 }
 
-._TTTTAB {
-  border: 1px solid red;
-}
-
-._TAB:hover ._SHINE {
+._HOVERED_TAB>svg>._SHINE {
   stroke: #89b!important;
-  fill: #457!important;
-}
-
-._TAB {
-  height: 30px;
+  fill: #679!important;
 }
 
 ._TAB>svg {
-  height: 100%;
-  margin: 0 -10px;
+  height: 30px;
+  margin-left: -11px;
 }
 
-._TAB._ON ._SHINE {
+._TAB>svg>path {
+  stroke-line-join: round;
+}
+
+._ACTIVE_TAB>svg>._SHINE {
+  stroke: #fff!important;
+  fill: #b2c4d8!important;
+}
+
+#_PARTS>._TAB>svg>._SHINE {
+  stroke: #abc;
+  fill: #8899b0;
+}
+
+#_PARTS>._HOVERED_TAB>svg>._SHINE {
   stroke: #def!important;
-  fill: #abc!important;
+  fill: #bcd!important;
 }
 
-#_PARTS ._SHINE {
-  stroke: #235;
-  fill: #08192c;
-}
-
-#_PARTS>._TAB:hover ._SHINE {
-  stroke: #457!important;
-  fill: #11223f!important;
-}
-
-#_PARTS>._TAB._ON ._SHINE {
-  stroke: #457!important;
-  fill: #012!important;
+#_PARTS>._ACTIVE_TAB>svg>._SHINE {
+  stroke: #346!important;
+  fill: #124!important;
 }

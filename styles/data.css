@@ -9,15 +9,15 @@ th, td {
 }
 
 table._DATA {
-  background: #eee;
+  background: #fff;
 }
 
 table._DATA th {
-  background: #fc0;
+  background: #bcd;
 }
 
 table._DATA tr._SUB_HEADING th {
-  background: #ddd;
+  background: #def;
 }
 
 table._DATA td {
@@ -25,7 +25,7 @@ table._DATA td {
 }
 
 table._DATA tr:nth-child(odd)>td {
-  background: #f8f8f8;
+  background: #eef8ff;
 }
 
 table._DATA._DOUBLE_HEADING tr:nth-child(odd)>td {
@@ -33,7 +33,7 @@ table._DATA._DOUBLE_HEADING tr:nth-child(odd)>td {
 }
 
 table._DATA._DOUBLE_HEADING tr:nth-child(even)>td {
-  background: #f8f8f8;
+  background: #f2f8ff;
 }
 
 var {
@@ -48,4 +48,9 @@ var {
 
 ._RED {
   color: #c00;
+}
+
+tr._PROJECT:hover>td {
+  background: #fea!important;
+  cursor: pointer;
 }

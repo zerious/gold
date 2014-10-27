@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #ccc;
+  background: #abc;
   color: #000;
   height: 100%;
 }
@@ -16,29 +16,43 @@ body {
   background: #235;
 }
 
-#_HEAD>img {
+#_GOLD {
   position: absolute;
   width: 30px;
   height: 30px;
   left: 4px;
   top: 0;
+  cursor: pointer;
 }
 
-#_TREE {
+#_GOLD._ON {
   background: #abc;
-  width: 80px;
+  border-radius: 12px;
+  border: 1px solid #fff;
 }
 
+#_MAIN,
 #_TREE,
 #_AREA {
   position: absolute;
   top: 30px;
   bottom: 0;
+  background: #abc;
+  overflow: auto;
+}
+
+#_MAIN {
+  z-index: 1002;
+  width: 100%;
+}
+
+#_TREE {
+  width: 15%;
 }
 
 #_AREA {
   background: #012;
-  left: 80px;
+  left: 15%;
   right: 0;
 }
 

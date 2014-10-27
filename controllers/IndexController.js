@@ -1,8 +1,9 @@
+var fs = require('fs');
 var Workspace = new require('../lib/workspace');
 
 app.workspace = new Workspace(process.env.WORKSPACE_DIR);
 setInterval(function () {
-  app.workspace.build();
+  app.workspace.load();
 }, 1e6);
 
 module.exports = {

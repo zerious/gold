@@ -1,3 +1,4 @@
+if projects = workspace.projects || 0
 if projects.length
   table._DATA._FULL_WIDTH._DOUBLE_HEADING
     tr
@@ -23,7 +24,7 @@ if projects.length
       th Failed
     for project in projects
       if pkg = project.pkg
-      tr._PROJECT
+      tr._PROJECT(id="_PROJECT|${project.dir}")
         td
           if pkg.homepage
             a(href="${pkg.homepage}")>b ${pkg.name}

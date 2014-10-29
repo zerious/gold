@@ -2,12 +2,11 @@ function TabStrip(id) {
   var self = this;
   var element = self._ELEMENT = getElement(id);
   var tabs = self._TABS = [];
+  self._MAP = {};
   self._INACTIVE_Z = 1;
-  self._ACTIVE_INDEX = 0;
   self._TAB_WIDTH = 0;
-  self._HOVERED_TAB;
-  self._ACTIVE_TAB;
-  self._ACTIVE_INDEX;
+  self._HOVERED_TAB = null;
+  self._ACTIVE_TAB = null;
   self._ACTIVATE_FN = doNothing;
   self._DEACTIVATE_FN = doNothing;
   tabStrips.push(self);
@@ -22,7 +21,7 @@ function TabStrip(id) {
 
   bind(element, 'mousemove mouseout click', function (element, event) {
     var left = element.offsetLeft + getParent(element).offsetLeft + 10;
-    var index = Math.floor((event.x - left) / self._TAB_WIDTH);
+    var index = Math.floor((event.x / zoom._FACTOR - left) / self._TAB_WIDTH);
     var tab = tabs[index];
     var type = event.type;
     if (type == 'mouseout') {
@@ -30,7 +29,12 @@ function TabStrip(id) {
     }
     else if (tab) {
       if (type == 'click') {
-        self._ACTIVATE(tab);
+        if (event.which == 1) {
+          self._ACTIVATE(tab);
+        }
+        else if (event.which == 2) {
+          self._REMOVE(tab);
+        }
       }
       else if (tab != self._HOVERED_TAB) {
         unhover(self._HOVERED_TAB);
@@ -39,14 +43,36 @@ function TabStrip(id) {
       }
     }
   });
+
 }
 
-// TODO: Add arguments for text, etc.
-TabStrip.prototype._ADD = function (text) {
+TabStrip.prototype._ADD = function (id) {
   var self = this;
-  var tab = new Tab(self, text);
-  self._TABS.push(tab);
-  self._REINDEX();
+  var tab = self._MAP[id];
+  if (!tab) {
+    tab = self._MAP[id] = new Tab(self, id);
+    self._TABS.push(tab);
+    self._REINDEX(self._TABS.length - 1);
+    self._RESIZE();
+  }
+  return tab;
+};
+
+TabStrip.prototype._REMOVE = function (id) {
+  var self = this;
+  var tab = self._MAP[id._ID || id];
+  if (tab) {
+    var index = tab._INDEX;
+    self._TABS.splice(index, 1);
+    delete self._MAP[tab._ID];
+    removeElement(tab._ELEMENT);
+    // TODO: Select the tab with the highest z-index?
+    if (tab == self._ACTIVE_TAB) {
+      self._ACTIVE_TAB = self._TABS[0];
+    }
+    self._REINDEX(index);
+    self._RESIZE();
+  }
   return tab;
 };
 
@@ -57,19 +83,16 @@ TabStrip.prototype._RESIZE = function () {
   self._DRAW();
 };
 
-TabStrip.prototype._REINDEX = function () {
-  var self = this;
-  var tabs = self._TABS;
+TabStrip.prototype._REINDEX = function (index) {
+  var tabs = this._TABS;
   var length = tabs.length;
-  for (var index = 0; index < length; index++) {
-    var tab = tabs[index];
-    if (tab == self._ACTIVE_TAB) {
-      self._ACTIVE_INDEX = index;
-    }
+  for (index = index || 0; index < length; index++) {
+    tabs[index]._INDEX = index;
   }
+  saveWorkspace();
 };
 
-TabStrip.prototype._DRAW = function (index, width) {
+TabStrip.prototype._DRAW = function (index) {
   var self = this;
   var length = self._TABS.length;
   var left = 10;
@@ -98,7 +121,6 @@ TabStrip.prototype._ACTIVATE = function (tab) {
     addClass(element, '_ACTIVE_TAB');
     self._ACTIVE_TAB = tab;
     tab._Z_ORDER();
-    self._REINDEX();
     self._DRAW();
     self._ACTIVATE_FN(tab);
   }
@@ -113,16 +135,16 @@ TabStrip.prototype._DEACTIVATE = function () {
     removeClass(element, '_ACTIVE_TAB');
     tab._Z_ORDER();
     self._DEACTIVATE_FN(tab);
-    self._REINDEX();
     self._DRAW();
   }
 };
 
-function Tab(strip, text) {
+function Tab(strip, id) {
   var self = this;
   var element = self._ELEMENT = addElement(strip._ELEMENT, '._TAB');
   self._STRIP = strip;
-  self._TEXT = text;
+  self._ID = id;
+  self._TEXT = id.replace(/^.*\//);
   self._Z_ORDER();
 }
 
@@ -131,7 +153,6 @@ Tab.prototype._Z_ORDER = function () {
   var element = self._ELEMENT;
   var strip = self._STRIP;
   var isActive = (self == strip._ACTIVE_TAB);
-  log(isActive);
   element.style.zIndex = self._Z = (isActive ? 1e3 : ++strip._INACTIVE_Z);
 };
 

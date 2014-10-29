@@ -9,7 +9,10 @@ setInterval(function () {
 module.exports = {
 
   index: function GET(request, response) {
-    response.view('index', app.workspace);
+    response.view('index', {
+      workspace: app.workspace,
+      zoom: request.cookies.z || 1
+    });
   }
 
 };

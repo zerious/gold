@@ -7,7 +7,3 @@ onReady(function () {
   });
 
 });
-
-on('a', 'click', function (element, event) {
-  stopPropagation(event);
-});

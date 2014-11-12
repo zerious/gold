@@ -1,22 +1,22 @@
 #_PROJECTS,
-#_PARTS {
+#_FILES {
   position: relative;
-  height: 30px;
   overflow: hidden;
+  height: 30px;
 }
 
 #_PROJECTS {
   margin-left: 30px;
 }
 
-#_PARTS {
+#_FILES {
   background: #abc;
 }
 
 #_HEAD>b,
 #_HEAD>u,
-#_PARTS>b,
-#_PARTS>u {
+#_FILES>b,
+#_FILES>u {
   position: absolute;
   display: block;
   width: 100%;
@@ -27,21 +27,21 @@
 }
 
 #_HEAD>b,
-#_PARTS>b {
+#_FILES>b {
   bottom: 1px;
   z-index: 999;
 }
 
-#_PARTS>b {
+#_FILES>b {
   background: #346;
 }
 
 #_HEAD>u {
-  background: #b8c9dc;
+  background: #abc;
 }
 
-#_PARTS>u {
-  background: #013;
+#_FILES>u {
+  background: #012;
 }
 
 ._TAB {
@@ -52,19 +52,16 @@
 }
 
 ._TAB>b {
-  font-weight: 500;
   display: block;
   margin: -27px 8px;
   white-space: nowrap;
   overflow: hidden;
-}
-
-._ACTIVE_TAB>b {
-  font-weight: 600;
+  font-weight: normal;
 }
 
 #_PROJECTS>._TAB>b {
   color: #abc;
+  text-shadow: 0 1px 0.5px #235;
 }
 
 #_PROJECTS>._HOVERED_TAB>b {
@@ -74,14 +71,31 @@
 #_PROJECTS>._ACTIVE_TAB>b {
   color: #000;
   text-shadow: 0 1px 0.5px #cde;
+  font-weight: bold;
 }
 
-#_PARTS>._TAB>b {
+#_FILES>._TAB>b {
   color: #000;
+  text-shadow: 0 1px 0.5px #9ab;
 }
 
-#_PARTS>._ACTIVE_TAB>b {
-  color: #fff!important;
+#_FILES>._ACTIVE_TAB>b {
+  color: #fff;
+  text-shadow: 0 1px 0.5px #000;
+}
+
+a._TAB>i {
+  display: inline-block;
+  float: right;
+  width: 18px;
+  height: 18px;
+  margin: 7px 4px;
+  z-index: 1005;
+  background: url(/close.svg) no-repeat;
+}
+
+a._TAB>i:hover {
+  background: url(/close-hover.svg) no-repeat;
 }
 
 ._SHADE {
@@ -100,6 +114,10 @@
   fill: #679!important;
 }
 
+a._TAB {
+  z-index: 1003;
+}
+
 ._TAB>svg {
   height: 30px;
   margin-left: -11px;
@@ -111,20 +129,20 @@
 
 ._ACTIVE_TAB>svg>._SHINE {
   stroke: #fff!important;
-  fill: #b2c4d8!important;
+  fill: #abc!important;
 }
 
-#_PARTS>._TAB>svg>._SHINE {
+#_FILES>._TAB>svg>._SHINE {
   stroke: #abc;
-  fill: #8899b0;
+  fill: #89a;
 }
 
-#_PARTS>._HOVERED_TAB>svg>._SHINE {
+#_FILES>._HOVERED_TAB>svg>._SHINE {
   stroke: #def!important;
   fill: #bcd!important;
 }
 
-#_PARTS>._ACTIVE_TAB>svg>._SHINE {
+#_FILES>._ACTIVE_TAB>svg>._SHINE {
   stroke: #346!important;
-  fill: #124!important;
+  fill: #012!important;
 }

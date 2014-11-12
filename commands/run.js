@@ -5,6 +5,6 @@ module.exports = function (options) {
   env.LIGHTER_APP = env.LIGHTER_DIR + '/lib/app';
   env.GOLD_PORT = options.port;
   env.WORKSPACE_DIR = (options.path || process.cwd()).replace(/[]\/\\]$/, '');
-  require('../node_modules/lighter/commands/start')('dev');
+  require('../node_modules/lighter/commands/start')(env.NODE_ENV || 'prod');
 
 };

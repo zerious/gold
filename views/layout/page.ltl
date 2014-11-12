@@ -4,27 +4,22 @@ html(lang="en")
       : ={styleTags}
     else
       link(rel="stylesheet" href="/a.css?v=={cacheBust}")
+    link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans:400,600,700|Oxygen+Mono:400")
     link(rel="shortcut icon" href="/favicon.ico?v=={cacheBust}")
     meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1")
     title Gold
 
-  body(style="zoom:${zoom}" id="${workspace.dir}")
+  body
     #_HEAD
-      img#_GOLD._ON(src="/gold.svg?v=={cacheBust}")
+      a#_GOLD._ON(href="/" data-_D6_TARGET="#_BODY" data-_D6_VIEW="workspace/body")
       b
       u
       #_PROJECTS
-    #_TREE._SCROLLABLE
-    #_AREA
-      #_PARTS
-        b
-        u
-      #_CODE._SCROLLABLE
-    #_MAIN._SCROLLABLE
-      form
-        call projects
+    #_BODY
+      get body
 
-    script var _PROJECTS=={list}
+    script(src="/cm.js?v=={cacheBust}")
+    script var _PROJECT_NAMES=={projectNames}
     if scriptTags
       script window._WAITING_FOR_SCRIPTS = 1
       : ={scriptTags}

@@ -1,0 +1,12 @@
+#_FILTER>input._SEARCH
+#_TREE._SCROLLABLE
+  s ${project.dir}
+  s ${tree}
+#_AREA>div
+  #_FILES
+    b
+    u
+    if file
+      s ${file}
+  #_MAIN._SCROLLABLE._CODE
+    call file/code

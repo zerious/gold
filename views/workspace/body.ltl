@@ -1,0 +1,12 @@
+#_FILTER>input._SEARCH
+#_TREE._SCROLLABLE
+  s .
+  s Projects/List|Grid\\|Settings/Editor|Users\\
+#_AREA>div
+  #_FILES
+    b
+    u
+    s Projects
+  #_MAIN._SCROLLABLE
+    form
+      call workspace/projects

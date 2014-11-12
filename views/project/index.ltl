@@ -1,0 +1,3 @@
+call layout/page
+  set body
+    call project/body

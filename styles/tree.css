@@ -1,0 +1,93 @@
+#_FILTER {
+  padding: 2px 4px;
+}
+
+#_FILTER>input {
+  background: #cde;
+  border-radius: 6px;
+  border: 1px solid #9ab;
+  display: block;
+  width: 100%;
+  padding: 2px 6px;
+  outline: none;
+}
+
+#_FILTER>input:focus {
+  background: #fff;
+  border-color: #679;
+}
+
+a._FILE,
+b._DIR {
+  white-space: nowrap;
+  padding: 2px 8px;
+  display: block;
+  cursor: pointer;
+  display: block;
+  font-weight: normal;
+  color: #012;
+}
+
+a._FILE>i,
+b._DIR>i {
+  display: inline-block;
+  vertical-align: top;
+  width: 32px;
+  height: 16px;
+  opacity: 0.6;
+  margin-right: 2px;
+}
+
+a._FILE>i {
+  background: url(/file.svg) no-repeat;
+}
+
+b._DIR>i {
+  background: url(/dir.svg) no-repeat;
+}
+
+b._OPEN>i {
+  background: url(/open.svg) no-repeat;
+}
+
+a._FILE._IGNORE>i,
+b._IGNORE a._FILE>i {
+  background: url(/file-ignore.svg) no-repeat;
+}
+
+b._DIR._IGNORE>i,
+b._IGNORE b._DIR>i {
+  background: url(/dir-ignore.svg) no-repeat;
+}
+
+b._OPEN._IGNORE>i,
+b._IGNORE b._OPEN>i {
+  background: url(/open-ignore.svg) no-repeat;
+}
+
+a._IGNORE,
+b._IGNORE,
+b._IGNORE b,
+b._IGNORE a {
+  color: #789!important;
+}
+
+a._FILE:hover,
+b._DIR:hover {
+  background: #bcd;
+  color: #000;
+}
+
+a._FILE:hover>i,
+b._DIR:hover>i {
+  opacity: 1;
+}
+
+b._TREE {
+  display: none;
+  margin-left: 16px;
+}
+
+b._TREE._OPEN {
+  display: block;
+}

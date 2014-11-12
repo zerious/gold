@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "Management and monitoring UI for apps built with Lighter",
   "dependencies": {
-    "lighter": "^0.1.71",
+    "codemirror": "~4.7.0",
+    "lighter": "^0.2.0",
+    "plans": "0.0.3",
     "shellify": "^0.0.4"
   },
   "devDependencies": {
     "zeriousify": "^0.1.10",
-    "exam": "^0.1.3",
+    "exam": "^0.1.5",
     "istanbul": "0.2.11"
   },
   "keywords": [

@@ -2,10 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }
 
 body {
-  font-family: Arial, sans-serif;
   background: #abc;
   color: #000;
   height: 100%;
@@ -18,54 +18,66 @@ body {
 
 #_GOLD {
   position: absolute;
-  width: 30px;
-  height: 30px;
   left: 0;
   top: 0;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   z-index: 1000;
+  background: url(/gold.svg) no-repeat;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
 }
 
 #_GOLD._ON {
-  background: #abc;
-  border-radius: 50%;
-  border: 1.6px solid #fff;
+  background-color: #abc;
+  border-color: #fff;
 }
 
-#_MAIN,
+#_FILTER,
 #_TREE,
-#_AREA {
+#_AREA,
+#_MAIN {
   position: absolute;
+  z-index: 1;
   top: 30px;
   bottom: 0;
-  background: #abc;
-  font-size: 1.1em;
+}
+
+#_TREE,
+#_FILTER {
+  width: 20%;
+}
+
+#_TREE {
+  top: 60px;
 }
 
 ._SCROLLABLE {
   overflow: auto;
 }
 
-#_MAIN {
-  z-index: 1002;
-  width: 100%;
-}
-
-#_TREE {
-  width: 15%;
-}
-
 #_AREA {
-  background: #012;
-  left: 15%;
   right: 0;
+  width: 80%;
+  background: #012;
 }
 
-#_BODY{
-  background: #eee;
+#_AREA>div,
+#_MAIN>p,
+#_MAIN>p>div {
+  position: relative;
+  height: 100%;
 }
 
-._HIDDEN {
+#_MAIN {
+  width: 100%;
+  z-index: 2;
+}
+
+._HIDDEN,
+s {
   display: none;
 }
 

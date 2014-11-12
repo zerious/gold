@@ -14,8 +14,8 @@ if projects.length
       th._ALIGN_RIGHT NPM
       th._ALIGN_RIGHT Core
       th._ALIGN_RIGHT Dev
-      th Origin
       th Main
+      th Fork
       th Issues
       th Pulls
       th Total
@@ -23,36 +23,36 @@ if projects.length
       th Passed
       th Failed
     for project in projects
-      if pkg = project.pkg
       tr._PROJECT(id="_PROJECT|${project.dir}")
         td
-          if pkg.homepage
-            a(href="${pkg.homepage}")>b ${pkg.name}
+          if project.homepage
+            a(href="${project.homepage}")>b ${project.name}
           else
-            b ${pkg.name}
-        if pkg.version > project.npm.version
-          td._ALIGN_RIGHT>var ${pkg.version}
+            b ${project.name}
+        if project.version > project.npm.version
+          td._ALIGN_RIGHT>var ${project.version}
         else
-          td._ALIGN_RIGHT ${pkg.version}
+          td._ALIGN_RIGHT ${project.version}
         td._ALIGN_RIGHT
           if project.npm && project.npm.version
-            a(href="https://www.npmjs.org/package/${pkg.name}") ${project.npm.version}
+            a(href="https://www.npmjs.org/package/${project.name}") ${project.npm.version}
         td._ALIGN_RIGHT ${project.dependencies}
         td._ALIGN_RIGHT ${project.devDependencies}
+        git = project.git || 0
+        remotes = git.remotes || 0
         td
-          if git = project.git
-            if remotes = git.remotes
-              if remotes.origin
-                a(href="${remotes.origin}") origin
+          if remotes.main
+            a(href="${remotes.main}") main
         td
-          if git = project.git
-            if remotes = git.remotes
-              if remotes.main
-                a(href="${remotes.main}") main
+          if remotes.origin
+            a(href="${remotes.origin}") fork
         td
           if project.issues && project.issues.count
             a(href="${project.issues.url}") ${project.issues.count}
         td
+          if git.compare
+            a(href="${git.compare}") +
+            : &nbsp;
           if project.pulls && project.pulls.count
             a(href="${project.pulls.url}")>b ${project.pulls.count}
         if diff = project.diff || {}

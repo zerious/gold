@@ -25,6 +25,6 @@ var gold = module.exports;
  */
 Object.defineProperty(gold, 'version', {
   get: function () {
-    return require('./package.json').version;
+    return require(__dirname + '/package.json').version;
   }
 });

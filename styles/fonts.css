@@ -1,9 +1,15 @@
-* {
+body {
+  color: #fff;
   line-height: 1.5;
 }
 
+body, th, td, input, select, textarea, button {
+  font-family: Open Sans, Arial, sans-serif;
+  font-size: 12px;
+}
+
 a {
-  color: #24a;
+  color: #69f;
   text-decoration: none;
 }
 
@@ -11,7 +17,6 @@ a:hover {
   color: #e50;
 }
 
-h1 {
-  font-size: 1.2em;
-  color: #fff;
+a, b, strong, th {
+  font-weight: bold;
 }

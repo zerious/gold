@@ -7,10 +7,19 @@ if (process.mainModule == module) {
   shellify({
     commands: {
       run: {
-        note: 'Runs the Gold web server',
+        note: 'Run the Gold web server',
         options: {
+          env: 'Environment|prod',
           dir: 'Workspace directory',
           port: 'Server port|11235',
+        }
+      },
+      link: {
+        note: 'Link dependencies to workspace projects where applicable',
+        options: {
+          dir: 'Workspace directory',
+          save: '!Save new version references',
+          undo: '!Replace symlinks with `npm install` results'
         }
       }
     }

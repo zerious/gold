@@ -1,16 +1,16 @@
 {
   "name": "gold",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Management and monitoring UI for apps built with Lighter",
   "dependencies": {
     "codemirror": "~4.7.0",
-    "lighter": "^0.2.0",
-    "plans": "0.0.3",
-    "shellify": "^0.0.4"
+    "lighter": "^0.3.0",
+    "plans": "^0.0.4",
+    "shellify": "^0.0.5"
   },
   "devDependencies": {
-    "zeriousify": "^0.1.10",
-    "exam": "^0.1.5",
+    "zeriousify": "^0.1.12",
+    "exam": "^0.1.6",
     "istanbul": "0.2.11"
   },
   "keywords": [

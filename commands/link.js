@@ -28,7 +28,7 @@ module.exports = function (input) {
       projectNames = fs.readdirSync(dir);
     }
     catch (e) {
-      console.log(('\nFailed to find projectNames in directory: "' + dir + '".\n') + e.stack.red);
+      console.log(('\nFailed to find projects in directory: "' + dir + '".\n') + e.stack.red);
     }
   }
   projectNames.forEach(discover);

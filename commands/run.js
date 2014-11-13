@@ -7,7 +7,7 @@
  *
  * Options:
  *   -d, --dir         Workspace directory.
- *   -e, --env         IDE Server environment ("debug", "dev", "test", "stage" or "prod").
+ *   -e, --env         IDE Server phase ("debug", "dev", "test", "stage" or "prod").
  *   -p, --port        IDE Server HTTP port.
  */
 

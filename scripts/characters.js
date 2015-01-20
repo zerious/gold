@@ -12,12 +12,12 @@ var characterMap = {
 };
 
 var characterWidths = {};
-for (var characterWidth in characterMap) {
-  var characterList = characterMap[characterWidth].split('');
-  characterList.forEach(function (character) {
+forIn(characterMap, function (characterWidth, characterList) {
+  characterList = characterList.split('');
+  forEach(characterList, function (character) {
     characterWidths[character] = +characterWidth;
   });
-}
+});
 
 function getTextWidth(text) {
   var width = 0;

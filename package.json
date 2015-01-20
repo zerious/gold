@@ -5,12 +5,11 @@
   "dependencies": {
     "codemirror": "~4.7.0",
     "lighter": "^0.3.0",
-    "plans": "^0.0.4",
-    "shellify": "^0.0.5"
+    "plans": "^1.0.0"
   },
   "devDependencies": {
-    "zeriousify": "^0.1.12",
-    "exam": "^0.1.6",
+    "coveralls": "2.11.1",
+    "exam": "^0.2.0",
     "istanbul": "0.2.11"
   },
   "keywords": [

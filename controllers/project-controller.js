@@ -4,7 +4,7 @@ module.exports = {
 
   index: function GET(request, response) {
     var query = request.query;
-    var project = app.workspace.map[query.id];
+    var project = App.workspace.map[query.id];
     var file = query.file || '';
     if (project) {
       var code = '';
@@ -14,7 +14,7 @@ module.exports = {
           tree: project.tree,
           file: file,
           code: code,
-          mode: app.modes[file.replace(/^.+\./, '')]
+          mode: App.modes[file.replace(/^.+\./, '')]
         });
       }
       if (file) {

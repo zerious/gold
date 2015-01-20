@@ -52,7 +52,9 @@ function TabStrip(id) {
 
 }
 
-TabStrip.prototype._ADD = function (id) {
+var proto = TabStrip.prototype;
+
+proto._ADD = function (id) {
   var self = this;
   var tab = self._MAP[id];
   if (!tab) {
@@ -66,7 +68,7 @@ TabStrip.prototype._ADD = function (id) {
   return tab;
 };
 
-TabStrip.prototype._REMOVE = function (id) {
+proto._REMOVE = function (id) {
   var self = this;
   var tab = self._MAP[id._ID || id];
   if (tab) {
@@ -97,20 +99,20 @@ TabStrip.prototype._REMOVE = function (id) {
   return tab;
 };
 
-TabStrip.prototype._CLEAR = function () {
+proto._CLEAR = function () {
   var self = this;
   self._TABS.length = 0;
   self._ACTIVE_TAB = 0;
 };
 
-TabStrip.prototype._RESIZE = function () {
+proto._RESIZE = function () {
   var self = this;
   var width = self._ELEMENT.clientWidth - 60;
   self._TAB_SCALE = Math.min(1, width / self._TOTAL_WIDTH);
   self._DRAW();
 };
 
-TabStrip.prototype._REINDEX = function (index) {
+proto._REINDEX = function (index) {
   var tabs = this._TABS;
   var length = tabs.length;
   for (index = index || 0; index < length; index++) {
@@ -119,7 +121,7 @@ TabStrip.prototype._REINDEX = function (index) {
   saveWorkspace();
 };
 
-TabStrip.prototype._DRAW = function (index) {
+proto._DRAW = function (index) {
   var self = this;
   var length = self._TABS.length;
   var left = 10;
@@ -131,7 +133,7 @@ TabStrip.prototype._DRAW = function (index) {
   }
 };
 
-TabStrip.prototype._ACTIVATE = function (tab) {
+proto._ACTIVATE = function (tab) {
   var self = this;
   var active = self._ACTIVE_TAB;
   if (tab != active) {
@@ -145,7 +147,7 @@ TabStrip.prototype._ACTIVATE = function (tab) {
   }
 };
 
-TabStrip.prototype._DEACTIVATE = function () {
+proto._DEACTIVATE = function () {
   var self = this;
   var tab = self._ACTIVE_TAB;
   self._ACTIVE_TAB = 0;

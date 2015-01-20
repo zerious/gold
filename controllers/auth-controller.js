@@ -2,9 +2,9 @@ var https = require('https');
 var qs = require('querystring');
 
 function setGithubToken(token) {
-  log.info('[Gold] GitHub Access Token: "' + token + '"');
-  app.config.github.token = token;
-  app.workspace.projects.forEach(function (project) {
+  Log.info('[Gold] GitHub Access Token: "' + token + '"');
+  App.config.github.token = token;
+  App.workspace.projects.forEach(function (project) {
     project.getGithubCounts();
   });
 }
@@ -15,7 +15,7 @@ module.exports = {
 
     response.redirect('/');
 
-    var github = app.config.github || {};
+    var github = App.config.github || {};
 
     var postData = qs.stringify({
       client_id: github.clientId,
@@ -46,7 +46,7 @@ module.exports = {
           data = JSON.parse(data);
         }
         catch (e) {
-          log.error('[Gold] Failed to parse GitHub access token JSON.', data);
+          Log.error('[Gold] Failed to parse GitHub access token JSON.', data);
           return;
         }
         setGithubToken(data.access_token);
@@ -54,7 +54,7 @@ module.exports = {
     });
 
     request.on('error', function(e) {
-      log.error('[Gold] Failed to retrieve GitHub access token.', e);
+      Log.error('[Gold] Failed to retrieve GitHub access token.', e);
     });
 
     request.write(postData);

@@ -1,6 +1,6 @@
 var fs = require('fs');
 var dir = __dirname.replace(/[\/\\]lib$/, '');
-var lighter = require(dir + '/node_modules/lighter/lighter.js');
+var lighter = require(dir + '/node_modules/lighter/lighter');
 
 var base = '\u001b[39m';
 var grey = '\u001b[90m';
@@ -8,32 +8,32 @@ var red = '\u001b[31m';
 var yellow = '\u001b[33m';
 var white = '\u001b[37m';
 
-require(dir + '/lib/object.js');
+require(dir + '/lib/object');
 
-var chug = require(dir + '/node_modules/lighter/node_modules/chug/chug.js');
+var chug = require(dir + '/node_modules/lighter/node_modules/chug/chug');
 chug.enableShrinking = function () {};
 
 var configPath = process.env.WORKSPACE_DIR + '/.gold.json';
-var log = require(dir + '/node_modules/lighter/node_modules/cedar/cedar.js')();
+var Log = require(dir + '/node_modules/lighter/node_modules/cedar/cedar')();
 try {
   config = require(configPath);
 }
 catch (e) {
-  log.error('[Gold] No configuration found in "' + configPath + '".');
+  Log.error('[Gold] No configuration found in "' + configPath + '".');
 }
 if (!config) {
-  log.warn('[Gold] Writing empty configuration.');
+  Log.warn('[Gold] Writing empty configuration.');
   config = {};
   var json = JSON.stringify(config);
   try {
     fs.writeFileSync(configPath, json);
   }
   catch (e) {
-    log.error('[Gold] Could not write configuration to "' + configPath + '".', e);
+    Log.error('[Gold] Could not write configuration to "' + configPath + '".', e);
   }
 }
 
-var app = lighter({
+var App = lighter({
 
   dir: dir,
 
@@ -43,7 +43,9 @@ var app = lighter({
 
   httpPort: process.env.GOLD_PORT,
 
-  enableCluster: false,
+  processCount: 1,
+
+  exposeGlobals: true,
 
   workspaceDir: process.env.WORKSPACE_DIR || process.cwd(),
 
@@ -75,27 +77,27 @@ var app = lighter({
   decorateContext: function (context, request) {
 
     // Allow far-future expires header on assets.
-    context.cacheBust = app.server._cacheBust;
+    context.cacheBust = App.server._cacheBust;
 
     // In dev mode, make it easier to debug individual files.
-    if (app.isDev) {
-      context.styleTags = app.styles['/a.css'].sourceLoad.getTags();
-      context.scriptTags = app.scripts['/a.js'].sourceLoad.getTags();
+    if (App.isDev) {
+      context.styleTags = App.styles['/a.css'].sourceLoad.getTags();
+      context.scriptTags = App.scripts['/a.js'].sourceLoad.getTags();
     }
 
-    var workspace = app.workspace || {};
+    var workspace = App.workspace || {};
     context.projectNames = workspace.projectNames || '[]';
   }
 
 });
 
-app.splode.listen(function (error) {
+App.splode.listen(function (error) {
   if (/ENOTFOUND/.test(error.toString())) {
-    app.splode.recover();
+    App.splode.recover();
   }
 });
 
-var Workspace = require(dir + '/lib/workspace.js');
-app.workspace = new Workspace(app.config.workspaceDir);
+var Workspace = require(dir + '/lib/workspace');
+App.workspace = new Workspace(App.config.workspaceDir);
 
-require(dir + '/lib/modes.js');
+require(dir + '/lib/modes');

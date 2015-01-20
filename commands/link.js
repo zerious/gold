@@ -1,40 +1,41 @@
-/**
- * Usage:
- *   gold link [<project1>, <project2>, ... <project3>]
- *
- * Description:
- *   Link dependencies to workspace projects where applicable.
- *
- * Options:
- *   -d, --dir         Workspace directory.
- *   -s, --save        Save new version references.
- *   -u, --undo        Replace symlinks with `npm install` results.
- */
-
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 var options;
-var projectNames;
+var projects;
 var projectPkgs = {}; // Map projectName names to packages.
 var dir;
 var groups = ['dependencies', 'devDependencies'];
 
-module.exports = function (input) {
-  options = input;
-  projectNames = input.$;
-  dir = input.dir || process.cwd();
-  if (!projectNames.length) {
-    try {
-      projectNames = fs.readdirSync(dir);
+module.exports = {
+
+  description: 'Link dependencies to workspace projects where applicable',
+
+  options: [
+    '-d, --dir   Workspace directory',
+    '-s, --save  Save new version references',
+    '-u, --undo  Replace symlinks with `npm install` results'
+  ],
+
+  extras: 'projects',
+
+  run: function (input) {
+    options = input;
+    projects = input.projects;
+    dir = input.dir || process.cwd();
+    if (!projects.length) {
+      try {
+        projects = fs.readdirSync(dir);
+      }
+      catch (e) {
+        console.log(('\nFailed to find projects in directory: "' + dir + '".\n') + e.stack.red);
+      }
     }
-    catch (e) {
-      console.log(('\nFailed to find projects in directory: "' + dir + '".\n') + e.stack.red);
+    projects.forEach(discover);
+    for (var projectName in projectPkgs) {
+      resolve(projectName);
     }
   }
-  projectNames.forEach(discover);
-  for (var projectName in projectPkgs) {
-    resolve(projectName);
-  }
+
 };
 
 function discover(projectName) {

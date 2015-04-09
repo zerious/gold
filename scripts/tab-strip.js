@@ -1,51 +1,51 @@
 function TabStrip(id) {
   var self = this;
   decorateObject(self, EmitterPrototype);
-  var element = self._ELEMENT = getElement(id);
-  var tabs = self._TABS = [];
-  self._MAP = {};
-  self._INACTIVE_Z = 1;
-  self._TOTAL_WIDTH = 0;
-  self._TAB_SCALE = 1;
-  self._HOVERED_TAB = null;
-  self._ACTIVE_TAB = null;
+  var element = self._element = getElement(id);
+  var tabs = self._tabs = [];
+  self._map = {};
+  self._inactiveZ = 1;
+  self._totalWidth = 0;
+  self._tabScale = 1;
+  self._hoveredTab = null;
+  self._activeTab = null;
   tabStrips.push(self);
-  self._RESIZE();
+  self._resize();
 
   function unhover(tab) {
     if (tab) {
-      removeClass(tab._ELEMENT, '_HOVERED_TAB');
+      removeClass(tab._element, '_hoveredTab');
     }
-    self._HOVERED_TAB = 0;
+    self._hoveredTab = 0;
   }
 
   on(element, 'i', 'click', function (close, event) {
-    var tab = close._TAB;
+    var tab = close._tab;
     if (tab) {
-      tab._STRIP._REMOVE(tab);
+      tab._strip._remove(tab);
     }
   });
 
   on(element, 'a', 'mousemove mouseout click', function (link, event) {
-    var tab = link._TAB;
+    var tab = link._tab;
     var type = event.type;
     if (type == 'mouseout') {
-      unhover(self._HOVERED_TAB);
+      unhover(self._hoveredTab);
     }
     else if (tab) {
       if (type == 'click') {
         if (event.which == 1) {
-          self._ACTIVATE(tab);
+          self._activate(tab);
         }
         else if (event.which == 2) {
-          self._REMOVE(tab);
+          self._remove(tab);
           preventDefault(event);
         }
       }
-      else if (tab != self._HOVERED_TAB) {
-        unhover(self._HOVERED_TAB);
-        self._HOVERED_TAB = tab;
-        addClass(tab._ELEMENT, '_HOVERED_TAB');
+      else if (tab != self._hoveredTab) {
+        unhover(self._hoveredTab);
+        self._hoveredTab = tab;
+        addClass(tab._element, '_hoveredTab');
       }
     }
   });
@@ -54,115 +54,115 @@ function TabStrip(id) {
 
 var proto = TabStrip.prototype;
 
-proto._ADD = function (id) {
+proto._add = function (id) {
   var self = this;
-  var tab = self._MAP[id];
+  var tab = self._map[id];
   if (!tab) {
-    tab = self._MAP[id] = new Tab(self, id);
-    self._TABS.push(tab);
-    self._TOTAL_WIDTH += tab._WIDTH;
-    self._REINDEX(self._TABS.length - 1);
-    self._RESIZE();
-    self._EMIT('_ADD', tab);
+    tab = self._map[id] = new Tab(self, id);
+    self._tabs.push(tab);
+    self._totalWidth += tab._width;
+    self._reindex(self._tabs.length - 1);
+    self._resize();
+    self._emit('_add', tab);
   }
   return tab;
 };
 
-proto._REMOVE = function (id) {
+proto._remove = function (id) {
   var self = this;
-  var tab = self._MAP[id._ID || id];
+  var tab = self._map[id._id || id];
   if (tab) {
-    var index = tab._INDEX;
-    self._TABS.splice(index, 1);
-    delete self._MAP[tab._ID];
-    self._TOTAL_WIDTH -= tab._WIDTH;
-    removeElement(tab._LINK);
-    removeElement(tab._ELEMENT);
-    removeElement(tab._CLOSE);
+    var index = tab._index;
+    self._tabs.splice(index, 1);
+    delete self._map[tab._id];
+    self._totalWidth -= tab._width;
+    removeElement(tab._link);
+    removeElement(tab._element);
+    removeElement(tab._close);
     // TODO: Select the tab with the highest z-index?
-    if (tab == self._ACTIVE_TAB) {
-      self._DEACTIVATE(tab);
-      var nextTab = self._TABS[0];
+    if (tab == self._activeTab) {
+      self._deactivate(tab);
+      var nextTab = self._tabs[0];
       if (nextTab) {
-        self._ACTIVATE(nextTab);
-        trigger(nextTab._LINK, 'click');
+        self._activate(nextTab);
+        trigger(nextTab._link, 'click');
       }
       else if (self == projectTabs) {
-        var menu = getElement('_GOLD');
+        var menu = getElement('_gold');
         trigger(menu, 'click');
       }
     }
-    self._REINDEX(index);
-    self._RESIZE();
-    self._EMIT('_REMOVE', tab);
+    self._reindex(index);
+    self._resize();
+    self._emit('_remove', tab);
   }
   return tab;
 };
 
-proto._CLEAR = function () {
+proto._clear = function () {
   var self = this;
-  self._TABS.length = 0;
-  self._ACTIVE_TAB = 0;
+  self._tabs.length = 0;
+  self._activeTab = 0;
 };
 
-proto._RESIZE = function () {
+proto._resize = function () {
   var self = this;
-  var width = self._ELEMENT.clientWidth - 60;
-  self._TAB_SCALE = Math.min(1, width / self._TOTAL_WIDTH);
-  self._DRAW();
+  var width = self._element.clientWidth - 60;
+  self._tabScale = Math.min(1, width / self._totalWidth);
+  self._draw();
 };
 
-proto._REINDEX = function (index) {
-  var tabs = this._TABS;
+proto._reindex = function (index) {
+  var tabs = this._tabs;
   var length = tabs.length;
   for (index = index || 0; index < length; index++) {
-    tabs[index]._INDEX = index;
+    tabs[index]._index = index;
   }
   saveWorkspace();
 };
 
-proto._DRAW = function (index) {
+proto._draw = function (index) {
   var self = this;
-  var length = self._TABS.length;
+  var length = self._tabs.length;
   var left = 10;
   for (index = index || 0; index < length; index++) {
-    var tab = self._TABS[index];
-    var width = Math.round(tab._WIDTH * self._TAB_SCALE);
-    tab._MOVE(left, width);
+    var tab = self._tabs[index];
+    var width = Math.round(tab._width * self._tabScale);
+    tab._move(left, width);
     left += width;
   }
 };
 
-proto._ACTIVATE = function (tab) {
+proto._activate = function (tab) {
   var self = this;
-  var active = self._ACTIVE_TAB;
+  var active = self._activeTab;
   if (tab != active) {
-    self._DEACTIVATE();
-    var element = tab._ELEMENT;
-    addClass(element, '_ACTIVE_TAB');
-    self._ACTIVE_TAB = tab;
-    tab._Z_ORDER();
-    self._DRAW();
-    self._EMIT('_ACTIVATE', tab);
+    self._deactivate();
+    var element = tab._element;
+    addClass(element, '_activeTab');
+    self._activeTab = tab;
+    tab._zOrder();
+    self._draw();
+    self._emit('_activate', tab);
   }
 };
 
-proto._DEACTIVATE = function () {
+proto._deactivate = function () {
   var self = this;
-  var tab = self._ACTIVE_TAB;
-  self._ACTIVE_TAB = 0;
+  var tab = self._activeTab;
+  self._activeTab = 0;
   if (tab) {
-    var element = tab._ELEMENT;
-    removeClass(element, '_ACTIVE_TAB');
-    tab._Z_ORDER();
-    self._EMIT('_DEACTIVATE', tab);
-    self._DRAW();
+    var element = tab._element;
+    removeClass(element, '_activeTab');
+    tab._zOrder();
+    self._emit('_deactivate', tab);
+    self._draw();
   }
 };
 
 var tabStrips = [];
 bind(window, 'resize', function () {
   forEach(tabStrips, function (strip) {
-    strip._RESIZE();
+    strip._resize();
   });
 });

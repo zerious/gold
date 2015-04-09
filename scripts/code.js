@@ -1,9 +1,9 @@
 var loadedModes = {};
 
 onReady(function () {
-  var code = getElement('_CODE');
+  var code = getElement('_code');
   if (code) {
-    var main = getElement('_MAIN');
+    var main = getElement('_main');
     var mode = getClass(code);
 
     function show() {

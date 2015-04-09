@@ -1,8 +1,8 @@
-#_FILTER {
+#_filter {
   padding: 2px 4px;
 }
 
-#_FILTER>input {
+#_filter>input {
   background: #cde;
   border-radius: 6px;
   border: 1px solid #9ab;
@@ -12,13 +12,13 @@
   outline: none;
 }
 
-#_FILTER>input:focus {
+#_filter>input:focus {
   background: #fff;
   border-color: #679;
 }
 
-a._FILE,
-b._DIR {
+a._file,
+b._dir {
   white-space: nowrap;
   padding: 2px 8px;
   display: block;
@@ -28,8 +28,8 @@ b._DIR {
   color: #012;
 }
 
-a._FILE>i,
-b._DIR>i {
+a._file>i,
+b._dir>i {
   display: inline-block;
   vertical-align: top;
   width: 32px;
@@ -38,56 +38,56 @@ b._DIR>i {
   margin-right: 2px;
 }
 
-a._FILE>i {
+a._file>i {
   background: url(/file.svg) no-repeat;
 }
 
-b._DIR>i {
+b._dir>i {
   background: url(/dir.svg) no-repeat;
 }
 
-b._OPEN>i {
+b._open>i {
   background: url(/open.svg) no-repeat;
 }
 
-a._FILE._IGNORE>i,
-b._IGNORE a._FILE>i {
+a._file._ignore>i,
+b._ignore a._file>i {
   background: url(/file-ignore.svg) no-repeat;
 }
 
-b._DIR._IGNORE>i,
-b._IGNORE b._DIR>i {
+b._dir._ignore>i,
+b._ignore b._dir>i {
   background: url(/dir-ignore.svg) no-repeat;
 }
 
-b._OPEN._IGNORE>i,
-b._IGNORE b._OPEN>i {
+b._open._ignore>i,
+b._ignore b._open>i {
   background: url(/open-ignore.svg) no-repeat;
 }
 
-a._IGNORE,
-b._IGNORE,
-b._IGNORE b,
-b._IGNORE a {
+a._ignore,
+b._ignore,
+b._ignore b,
+b._ignore a {
   color: #789!important;
 }
 
-a._FILE:hover,
-b._DIR:hover {
+a._file:hover,
+b._dir:hover {
   background: #bcd;
   color: #000;
 }
 
-a._FILE:hover>i,
-b._DIR:hover>i {
+a._file:hover>i,
+b._dir:hover>i {
   opacity: 1;
 }
 
-b._TREE {
+b._tree {
   display: none;
   margin-left: 16px;
 }
 
-b._TREE._OPEN {
+b._tree._open {
   display: block;
 }

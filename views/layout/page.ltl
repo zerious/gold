@@ -1,29 +1,20 @@
 html(lang="en")
   head
-    if styleTags
-      : ={styleTags}
+    if headTags
+      : ={headTags}
     else
-      link(rel="stylesheet" href="/a.css?v=={cacheBust}")
-    link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans:400,600,700|Oxygen+Mono:400")
-    link(rel="shortcut icon" href="/favicon.ico?v=={cacheBust}")
+      link(rel="stylesheet" href="/a.js?v=={cacheBust}")
     meta(name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1")
     title Gold
 
   body
-    #_HEAD
-      a#_GOLD._ON(href="/" data-_D6_TARGET="#_BODY" data-_D6_VIEW="workspace/body")
+    #_head
+      a#_gold._on(href="/" data-_d6Target="#_body" data-_d6View="workspace/body")
       b
       u
-      #_PROJECTS
-    #_BODY
+      #_projects
+    #_body
       get body
 
     script(src="/cm.js?v=={cacheBust}")
-    script var _PROJECT_NAMES=={projectNames}
-    if scriptTags
-      script window._WAITING_FOR_SCRIPTS = 1
-      : ={scriptTags}
-      // Once D6 has context, it calls onReady upon transitions, otherwise call it here.
-      script D6._CONTEXT || window._ON_READY()
-    else
-      script(src="/a.js?v=={cacheBust}")
+    script var _projectNames=={projectNames}

@@ -37,15 +37,15 @@ var App = lighter({
 
   dir: dir,
 
-  logger: [{transport: 'console'}],
+  log: [{transport: 'console'}],
 
   configPath: configPath,
 
-  httpPort: process.env.GOLD_PORT,
+  port: process.env.GOLD_PORT,
 
   processCount: 1,
 
-  exposeGlobals: true,
+  globalCase: 'title',
 
   workspaceDir: process.env.WORKSPACE_DIR || process.cwd(),
 
@@ -60,19 +60,6 @@ var App = lighter({
     white + 'H' + yellow + '#####################' + red + '#H' + base + '  ',
     yellow + 'H' + red + '######################H' + base + '  ',
     ''],
-
-  scripts: {
-    '/a.js': [
-      'node_modules/lighter/node_modules/jymin/plugins/md5.js',
-      'scripts'
-    ],
-  },
-
-  styles: {
-    '/a.css': [
-      'styles'
-    ],
-  },
 
   decorateContext: function (context, request) {
 
@@ -91,13 +78,7 @@ var App = lighter({
 
 });
 
-App.splode.listen(function (error) {
-  if (/ENOTFOUND/.test(error.toString())) {
-    App.splode.recover();
-  }
-});
-
 var Workspace = require(dir + '/lib/workspace');
-App.workspace = new Workspace(App.config.workspaceDir);
+App.workspace = new Workspace(App.workspaceDir);
 
 require(dir + '/lib/modes');

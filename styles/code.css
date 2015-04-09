@@ -1,11 +1,11 @@
-textarea#_CODE {
+textarea#_code {
   display: none;
 }
 
 .CodeMirror {
   background: #012;
   color: #fff;
-  font-family: Menlo, "Lucida Console", mono;
+  font: 400 16px _sourceCodePro, Arial;
 }
 
 .cm-variable { color: #ddd; }

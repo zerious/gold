@@ -9,7 +9,7 @@ function Tree(id, project, string) {
     var item = list[i];
     switch (item) {
       case '/':
-        html += '<b class="_TREE' + ignore + '">';
+        html += '<b class="_tree' + ignore + '">';
         break;
       case '\\':
         stack.pop();
@@ -21,20 +21,20 @@ function Tree(id, project, string) {
         if (item) {
           ignore = '';
           var isDir = (list[i + 1] == '/');
-          var classes = isDir ? '_DIR' : '_FILE';
+          var classes = isDir ? '_dir' : '_file';
           if (item[0] == '`') {
             item = item.substr(1);
-            ignore = ' _IGNORE';
+            ignore = ' _ignore';
             classes += ignore;
           }
           stack.push(item);
           var path = stack.join('/');
           if (isDir) {
-            html += '<b class="' + classes + '" id="_DIR:' + path + '"><i></i>' + item + '</b>';
+            html += '<b class="' + classes + '" id="_dir:' + path + '"><i></i>' + item + '</b>';
           }
           else {
             var href = base + path;
-            html += '<a class="' + classes + '" href="' + href + '" data-_D6_TARGET="#_MAIN" data-_D6_VIEW="file/code"><i></i>' + item + '</a>';
+            html += '<a class="' + classes + '" href="' + href + '" data-_d6Target="#_main" data-_d6View="file/code"><i></i>' + item + '</a>';
             stack.pop();
           }
         }
@@ -44,15 +44,15 @@ function Tree(id, project, string) {
   setHtml(element, html);
 }
 
-on('b._DIR', 'click', function (element) {
+on('b._dir', 'click', function (element) {
   var tree = getNextSibling(element);
-  var isOpen = toggleClass(element, '_OPEN');
-  flipClass(tree, '_OPEN', isOpen);
-  var dir = element.id.replace(/^_DIR:/, '');
+  var isOpen = toggleClass(element, '_open');
+  flipClass(tree, '_open', isOpen);
+  var dir = element.id.replace(/^_dir:/, '');
   toggleTreeDir(dir, isOpen);
 });
 
-on('a._FILE', 'click', function (element, event) {
+on('a._file', 'click', function (element, event) {
   var id = element.href.replace(/^.*file=/, '');
   showFile(id);
   preventDefault(event);

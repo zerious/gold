@@ -1,22 +1,22 @@
-#_PROJECTS,
-#_FILES {
+#_projects,
+#_files {
   position: relative;
   overflow: hidden;
   height: 30px;
 }
 
-#_PROJECTS {
+#_projects {
   margin-left: 30px;
 }
 
-#_FILES {
+#_files {
   background: #abc;
 }
 
-#_HEAD>b,
-#_HEAD>u,
-#_FILES>b,
-#_FILES>u {
+#_head>b,
+#_head>u,
+#_files>b,
+#_files>u {
   position: absolute;
   display: block;
   width: 100%;
@@ -26,32 +26,32 @@
   background: #fff;
 }
 
-#_HEAD>b,
-#_FILES>b {
+#_head>b,
+#_files>b {
   bottom: 1px;
   z-index: 999;
 }
 
-#_FILES>b {
+#_files>b {
   background: #346;
 }
 
-#_HEAD>u {
+#_head>u {
   background: #abc;
 }
 
-#_FILES>u {
+#_files>u {
   background: #012;
 }
 
-._TAB {
+._tab {
   position: absolute;
   height: 30px;
   cursor: pointer;
   top: 0;
 }
 
-._TAB>b {
+._tab>b {
   display: block;
   margin: -27px 8px;
   white-space: nowrap;
@@ -59,32 +59,32 @@
   font-weight: normal;
 }
 
-#_PROJECTS>._TAB>b {
+#_projects>._tab>b {
   color: #abc;
   text-shadow: 0 1px 0.5px #235;
 }
 
-#_PROJECTS>._HOVERED_TAB>b {
+#_projects>._hoveredTab>b {
   color: #fff;
 }
 
-#_PROJECTS>._ACTIVE_TAB>b {
+#_projects>._activeTab>b {
   color: #000;
   text-shadow: 0 1px 0.5px #cde;
   font-weight: bold;
 }
 
-#_FILES>._TAB>b {
+#_files>._tab>b {
   color: #000;
   text-shadow: 0 1px 0.5px #9ab;
 }
 
-#_FILES>._ACTIVE_TAB>b {
+#_files>._activeTab>b {
   color: #fff;
   text-shadow: 0 1px 0.5px #000;
 }
 
-a._TAB>i {
+a._tab>i {
   display: inline-block;
   float: right;
   width: 18px;
@@ -94,55 +94,55 @@ a._TAB>i {
   background: url(/close.svg) no-repeat;
 }
 
-a._TAB>i:hover {
+a._tab>i:hover {
   background: url(/close-hover.svg) no-repeat;
 }
 
-._SHADE {
+._shade {
   fill: #000;
-  filter: url(#_BLUR);
+  filter: url(#_blur);
 }
 
-._SHINE {
+._shine {
   stroke-width: 1.6px;
   stroke: #457;
   fill: #346;
 }
 
-._HOVERED_TAB>svg>._SHINE {
+._hoveredTab>svg>._shine {
   stroke: #89b!important;
   fill: #679!important;
 }
 
-a._TAB {
+a._tab {
   z-index: 1003;
 }
 
-._TAB>svg {
+._tab>svg {
   height: 30px;
   margin-left: -11px;
 }
 
-._TAB>svg>path {
+._tab>svg>path {
   stroke-line-join: round;
 }
 
-._ACTIVE_TAB>svg>._SHINE {
+._activeTab>svg>._shine {
   stroke: #fff!important;
   fill: #abc!important;
 }
 
-#_FILES>._TAB>svg>._SHINE {
+#_files>._tab>svg>._shine {
   stroke: #abc;
   fill: #89a;
 }
 
-#_FILES>._HOVERED_TAB>svg>._SHINE {
+#_files>._hoveredTab>svg>._shine {
   stroke: #def!important;
   fill: #bcd!important;
 }
 
-#_FILES>._ACTIVE_TAB>svg>._SHINE {
+#_files>._activeTab>svg>._shine {
   stroke: #346!important;
   fill: #012!important;
 }

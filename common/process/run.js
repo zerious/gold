@@ -3,7 +3,7 @@
  * output data, or an "error" event with an Error, decorated with a `details`
  * property.
  *
- * @origin lighter-common/common/process/run.js
+ * @origin https://github.com/lighterio/lighter-common/common/process/run.js
  * @version 0.0.1
  */
 

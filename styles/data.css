@@ -13,25 +13,25 @@ td {
   color: #ccc;
 }
 
-table._DATA {
+table._data {
   background: #000;
 }
 
-table._DATA th {
+table._data th {
   background: #469;
 }
 
-table._DATA tr._SUB_HEADING th {
+table._data tr._subHeading th {
   background: #235;
 }
 
-table._DATA td,
-table._DATA._DOUBLE_HEADING tr:nth-child(odd)>td {
+table._data td,
+table._data._doubleHeading tr:nth-child(odd)>td {
   background: #012;
 }
 
-table._DATA tr:nth-child(odd)>td,
-table._DATA._DOUBLE_HEADING tr:nth-child(even)>td {
+table._data tr:nth-child(odd)>td,
+table._data._doubleHeading tr:nth-child(even)>td {
   background: #000;
 }
 
@@ -43,15 +43,15 @@ var {
   font-style: normal;
 }
 
-._GREEN {
+._green {
   color: #080;
 }
 
-._RED {
+._red {
   color: #c00;
 }
 
-tr._PROJECT:hover>td {
+tr._project:hover>td {
   background: #124!important;
   cursor: pointer;
 }

@@ -1,1 +1,1 @@
-textarea#_CODE.${mode} ${code}
+textarea#_code.${mode} ${code}

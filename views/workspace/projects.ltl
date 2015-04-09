@@ -1,6 +1,6 @@
 if projects = workspace.projects || 0
 if projects.length
-  table._DATA._FULL_WIDTH._DOUBLE_HEADING
+  table._data._fullWidth._doubleHeading
     tr
       th Project
       th(colspan="2") Version
@@ -8,12 +8,12 @@ if projects.length
       th(colspan="4") Git
       th(colspan="3") Lines
       th(colspan="2") Tests
-    tr._SUB_HEADING
+    tr._subHeading
       th Name
-      th._ALIGN_RIGHT Local
-      th._ALIGN_RIGHT NPM
-      th._ALIGN_RIGHT Core
-      th._ALIGN_RIGHT Dev
+      th._alignRight Local
+      th._alignRight NPM
+      th._alignRight Core
+      th._alignRight Dev
       th Main
       th Fork
       th Issues
@@ -23,21 +23,21 @@ if projects.length
       th Passed
       th Failed
     for project in projects
-      tr._PROJECT(id="_PROJECT|${project.dir}")
+      tr._project(id="_project|${project.dir}")
         td
           if project.homepage
             a(href="${project.homepage}")>b ${project.name}
           else
             b ${project.name}
         if project.version > project.npm.version
-          td._ALIGN_RIGHT>var ${project.version}
+          td._alignRight>var ${project.version}
         else
-          td._ALIGN_RIGHT ${project.version}
-        td._ALIGN_RIGHT
+          td._alignRight ${project.version}
+        td._alignRight
           if project.npm && project.npm.version
             a(href="https://www.npmjs.org/package/${project.name}") ${project.npm.version}
-        td._ALIGN_RIGHT ${project.dependencies}
-        td._ALIGN_RIGHT ${project.devDependencies}
+        td._alignRight ${project.dependencies}
+        td._alignRight ${project.devDependencies}
         git = project.git || 0
         remotes = git.remotes || 0
         td
@@ -56,19 +56,19 @@ if projects.length
           if project.pulls && project.pulls.count
             a(href="${project.pulls.url}")>b ${project.pulls.count}
         if diff = project.diff || {}
-          td._ALIGN_RIGHT._LINES ${project.lines}
-          td._ALIGN_RIGHT
+          td._alignRight._lines ${project.lines}
+          td._alignRight
             if diff.additions
-              b._GREEN +={diff.additions}
-          td._ALIGN_RIGHT
+              b._green +={diff.additions}
+          td._alignRight
             if diff.deletions
-              b._RED -={diff.deletions}
+              b._red -={diff.deletions}
         if results = project.results
-          td._ALIGN_RIGHT
+          td._alignRight
             if results.pass
-              b._GREEN ${results.pass}
-          td._ALIGN_RIGHT
+              b._green ${results.pass}
+          td._alignRight
             if results.fail
-              b._RED ${results.fail}
+              b._red ${results.fail}
 else
   p No projects found.

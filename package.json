@@ -1,16 +1,14 @@
 {
   "name": "gold",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Management and monitoring UI for apps built with Lighter",
   "dependencies": {
-    "codemirror": "~4.7.0",
+    "codemirror": "^4.12.1",
     "lighter": "^0.3.0",
-    "plans": "^1.0.0"
+    "plans": "^0.1.0"
   },
   "devDependencies": {
-    "coveralls": "2.11.1",
-    "exam": "^0.2.0",
-    "istanbul": "0.2.11"
+    "exam": "^0.2.4"
   },
   "keywords": [
     "lighter",
@@ -31,9 +29,9 @@
   },
   "scripts": {
     "test": "./node_modules/exam/exam.js",
-    "cover": "istanbul cover ./node_modules/exam/exam.js",
+    "cover": "./node_modules/exam/exam-cover.js",
     "report": "open coverage/lcov-report/index.html",
-    "coveralls": "istanbul cover ./node_modules/exam/exam.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coveralls": "./node_modules/exam/exam-coveralls.js"
   },
   "repository": "https://github.com/lighterio/gold",
   "bugs": "https://github.com/lighterio/gold/issues",
